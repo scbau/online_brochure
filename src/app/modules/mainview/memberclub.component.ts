@@ -21,14 +21,14 @@ export class MemberClubComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     WebViewer({
       path: '../lib',
-      initialDoc: '../assets/pdf/scb/test.pdf'
+      initialDoc: '../assets/pdf/scb/memberclubprogram.pdf'
     }, this.viewer.nativeElement).then(instance => {
-      instance.disableElements(['header']);
-      instance.disableElements(['viewControlsButton']);
+      // instance.disableElements(['header']);
+      // instance.disableElements(['viewControlsButton']);
+      instance.disableElements(['leftPanel']);
       instance.disableElements(['freeHandToolGroupButton']);
       instance.disableElements(['textToolGroupButton']);
       instance.disableElements(['shapeToolGroupButton']);
-      instance.disableElements(['leftPanel']);
       /*
       instance.disableElements(['signatureToolButton']);
       instance.disableElements(['freeTextToolButton']);
@@ -95,7 +95,7 @@ export class MemberClubComponent implements OnInit, AfterViewInit {
     })
   }
 
-  public pdfSrc = "../assets/pdf/scb/test.pdf";
+  public pdfSrc = "../assets/pdf/scb/memberclubprogram.pdf";
 
   data;
 
