@@ -76,7 +76,7 @@ export class MemberClubComponent implements OnInit, AfterViewInit {
       });*/
 
       var LayoutMode = instance.LayoutMode;
-      instance.setLayoutMode(LayoutMode.Facing);
+      instance.setLayoutMode(LayoutMode.FacingCover);
       // instance.disableElements(['toolbarGroup-Edit']);
       // instance.disableElements(['leftPanel', 'leftPanelButton']);
 
