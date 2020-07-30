@@ -23,7 +23,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest",
-              "src/lib"
+              "src/lib",
+              "src/files"
             ],
             "styles": [
               "./node_modules/videogular2/fonts/videogular.css",

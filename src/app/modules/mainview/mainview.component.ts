@@ -21,11 +21,14 @@ export class MainviewComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     WebViewer({
       path: '../lib',
-      initialDoc: '../assets/pdf/scb/automotive.pdf'
+      initialDoc: '../assets/pdf/scb/test.pdf'
     }, this.viewer.nativeElement).then(instance => {
-      this.wvInstance = instance;
+      var LayoutMode = instance.LayoutMode;
+      instance.setLayoutMode(LayoutMode.Facing);
+      instance.disableElements(['toolbarGroup-Edit']);
+      instance.disableElements(['leftPanel', 'leftPanelButton']);
 
-      instance.openElements(['notesPanel']);
+      this.wvInstance = instance;
 
       this.viewer.nativeElement.addEventListener('pageChanged', (e) => {
         const [pageNumber] = e.detail;
@@ -40,7 +43,7 @@ export class MainviewComponent implements OnInit, AfterViewInit {
     })
   }
 
-  public pdfSrc = "../assets/pdf/scb/automotive.pdf";
+  public pdfSrc = "../assets/pdf/scb/test.pdf";
 
   data;
 
@@ -92,8 +95,8 @@ export class MainviewComponent implements OnInit, AfterViewInit {
     rectangle.Height = 250;
     rectangle.StrokeThickness = 5;
     rectangle.Author = annotManager.getCurrentUser();
-    annotManager.addAnnotation(rectangle);
-    annotManager.drawAnnotations(rectangle.PageNumber);
+    /*annotManager.addAnnotation(rectangle);
+    annotManager.drawAnnotations(rectangle.PageNumber);*/
     // see https://www.pdftron.com/api/web/WebViewer.html for the full list of low-level APIs
   }
 
