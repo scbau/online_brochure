@@ -28,6 +28,13 @@ export class MainviewComponent implements OnInit, AfterViewInit {
       instance.disableElements(['toolbarGroup-Edit']);
       instance.disableElements(['leftPanel', 'leftPanelButton']);
 
+      instance.disableElements(['header']);
+      instance.disableElements(['viewControlsButton']);
+      instance.disableElements(['leftPanel']);
+      instance.disableElements(['searchButton']);
+      instance.disableElements(['menuButton']);
+      instance.disableElements(['pageNavOverlay']);
+
       this.wvInstance = instance;
 
       this.viewer.nativeElement.addEventListener('pageChanged', (e) => {
