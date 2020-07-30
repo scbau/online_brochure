@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainviewComponent } from './modules/mainview/mainview.component';
+import { MemberClubComponent } from './modules/mainview/memberclub.component';
 import { MainVideoComponent } from './modules/mainvideo/mainvideo.component';
 import { DownloadComponent } from './modules/download/download.component';
 
@@ -14,6 +15,16 @@ const routes: Routes = [
         path: '',
         redirectTo: 'scb/automotive',
         pathMatch: 'full'
+    },
+    {
+        path: 'scb/memberclubprogram',
+        component: MemberClubComponent,
+        data: {
+          path: 'scb/memberclubprogram',
+          length: 1,
+          title: 'Member Club Program',
+          id: 0
+    }
     },
     {
         path: 'scb/automotive',

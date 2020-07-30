@@ -13,44 +13,11 @@ import { MessageService } from '../../services/message/message.service';
   templateUrl: './mainview.component.html',
   styleUrls: ['./mainview.component.css']
 })
-export class MainviewComponent implements OnInit, AfterViewInit {
+export class MainviewComponent implements OnInit {
 
   @ViewChild('viewer', { static: false }) viewer: ElementRef;
-  wvInstance: any;
 
-  ngAfterViewInit(): void {
-    WebViewer({
-      path: '../lib',
-      initialDoc: '../assets/pdf/scb/test.pdf'
-    }, this.viewer.nativeElement).then(instance => {
-      var LayoutMode = instance.LayoutMode;
-      instance.setLayoutMode(LayoutMode.Facing);
-      instance.disableElements(['toolbarGroup-Edit']);
-      instance.disableElements(['leftPanel', 'leftPanelButton']);
-
-      instance.disableElements(['header']);
-      instance.disableElements(['viewControlsButton']);
-      instance.disableElements(['leftPanel']);
-      instance.disableElements(['searchButton']);
-      instance.disableElements(['menuButton']);
-      instance.disableElements(['pageNavOverlay']);
-
-      this.wvInstance = instance;
-
-      this.viewer.nativeElement.addEventListener('pageChanged', (e) => {
-        const [pageNumber] = e.detail;
-        console.log(`Current page is ${pageNumber}`);
-      });
-
-      instance.docViewer.on('annotationsLoaded', () => {
-        console.log(`annotations loaded`);
-      });
-
-      instance.docViewer.on('documentLoaded', this.wvDocumentLoadedHandler);
-    })
-  }
-
-  public pdfSrc = "../assets/pdf/scb/test.pdf";
+  public pdfSrc = "../assets/pdf/scb/automotive.pdf";
 
   data;
 
@@ -65,7 +32,6 @@ export class MainviewComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.wvDocumentLoadedHandler = this.wvDocumentLoadedHandler.bind(this);
 
     this.messageService.currentMessage.subscribe(message => this.message = message);
 
@@ -86,25 +52,6 @@ export class MainviewComponent implements OnInit, AfterViewInit {
     }
 
     this.slides = x;*/
-  }
-
-  wvDocumentLoadedHandler(): void {
-    // you can access docViewer object for low-level APIs
-    const docViewer = this.wvInstance;
-    const annotManager = this.wvInstance.annotManager;
-    // and access classes defined in the WebViewer iframe
-    const { Annotations } = this.wvInstance;
-    const rectangle = new Annotations.RectangleAnnotation();
-    rectangle.PageNumber = 1;
-    rectangle.X = 100;
-    rectangle.Y = 100;
-    rectangle.Width = 250;
-    rectangle.Height = 250;
-    rectangle.StrokeThickness = 5;
-    rectangle.Author = annotManager.getCurrentUser();
-    /*annotManager.addAnnotation(rectangle);
-    annotManager.drawAnnotations(rectangle.PageNumber);*/
-    // see https://www.pdftron.com/api/web/WebViewer.html for the full list of low-level APIs
   }
 
 

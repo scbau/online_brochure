@@ -14,6 +14,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SidebarComponent } from './modules/sidebar/sidebar.component';
 import { MainviewComponent } from './modules/mainview/mainview.component';
+import { MemberClubComponent } from './modules/mainview/memberclub.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './shared/material.module';
@@ -40,6 +41,7 @@ import { DownloadComponent } from './modules/download/download.component';
     AppComponent,
     SidebarComponent,
     MainviewComponent,
+    MemberClubComponent,
     DownloadComponent
   ],
   imports: [

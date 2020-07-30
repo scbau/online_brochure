@@ -23,7 +23,7 @@ interface FoodNode {
 }
 
 var TREE_DATA: FoodNode[] = [
-    {
+  {
         "id": 1,
         "name": "SCB",
         "children": [
@@ -106,10 +106,22 @@ var TREE_DATA: FoodNode[] = [
                 ]
             }*/
         ]
-    }
+    },
+    {
+        "id": 4,
+        "name": "Member Club Program",
+        "children": [
+            {
+              "id": 41, "name": "Brochures", "children": [
+                { "id": 411, "selected": false, "name": "Program Brochure", "route": "/scb/memberclubprogram" },
+              ]
+            }
+        ]
+    }, 
 ];
 
 var currentNode: FoodNode = TREE_DATA[0].children[0].children[0];
+// var currentNode: FoodNode = TREE_DATA[0];
 
 @Component({
     selector: 'app-sidebar',
@@ -225,6 +237,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
     }
 
     changeRoute(node: FoodNode): void {
+      console.log("CHANGING ROUTE");
+      console.log(node);
+      console.log(currentNode);
         this.navbarText = node.name;
         
         var currentNodeID = currentNode.id.toString();
